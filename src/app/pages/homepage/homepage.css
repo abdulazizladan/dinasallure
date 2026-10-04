@@ -1,0 +1,24 @@
+/* Small shade dot next to each gloss name */
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: inset 0 0 0 1px rgb(42 20 32 / 0.15);
+}
+
+/* Hero lineup: stagger the tubes so the row feels arranged, not gridded */
+.lineup img:nth-child(odd) {
+  margin-top: 2rem;
+}
+
+.product-photo {
+  transform: scale(1.15);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover .product-photo {
+    transform: scale(1.25);
+  }
+}

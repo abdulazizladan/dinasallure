@@ -1,0 +1,51 @@
+/* Form fields: 12px radius, blush border, pink focus ring, small bold muted labels */
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand-muted);
+}
+
+.field :is(input, select, textarea) {
+  width: 100%;
+  border: 1px solid var(--color-brand-blush-deep);
+  border-radius: 12px;
+  background: var(--color-brand-ivory);
+  padding: 0.75rem 1rem;
+  color: var(--color-brand-ink);
+  font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field :is(input, select, textarea):focus {
+  outline: none;
+  border-color: var(--color-brand-pink);
+  box-shadow: 0 0 0 3px rgb(240 80 157 / 0.18);
+}
+
+.field :is(input, textarea).ng-invalid.ng-touched {
+  border-color: var(--color-brand-pink-deep);
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: var(--color-brand-pink-deep);
+}
+
+/* A deeper WhatsApp green keeps white text readable; the shape stays a brand pill */
+.btn-whatsapp {
+  background: #15803D;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background: #166534;
+}
