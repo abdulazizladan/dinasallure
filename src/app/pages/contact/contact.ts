@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-// PLACEHOLDER: replace with the business WhatsApp number in international format, digits only (e.g. 2348012345678)
-const WHATSAPP_NUMBER = '0000000000000';
+// Business WhatsApp (0913 391 3355) in international format, digits only, as wa.me requires
+const WHATSAPP_NUMBER = '2349133913355';
 
 @Component({
   selector: 'app-contact',

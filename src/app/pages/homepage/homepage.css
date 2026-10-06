@@ -17,8 +17,17 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Tall bottles need the whole frame, so no default zoom */
+.product-photo-full {
+  transform: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .card:hover .product-photo {
     transform: scale(1.25);
+  }
+
+  .card:hover .product-photo-full {
+    transform: scale(1.06);
   }
 }

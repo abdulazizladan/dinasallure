@@ -17,6 +17,14 @@ interface CareProduct {
   description: string;
 }
 
+interface HairProduct {
+  name: string;
+  size: string;
+  note: string;
+  benefits: string[];
+  image: string;
+}
+
 @Component({
   selector: 'app-homepage',
   standalone: false,
@@ -33,11 +41,35 @@ export class Homepage {
   ];
 
   protected readonly careProducts: CareProduct[] = [
-    { name: 'Facial Mask', category: 'Skincare', description: 'A gentle weekly reset that leaves skin calm and soft.' },
+    //{ name: 'Facial Mask', category: 'Skincare', description: 'A gentle weekly reset that leaves skin calm and soft.' },
     { name: 'Body Scrub', category: 'Body care', description: 'Buffs away dullness, then melts into a nourishing oil.' },
     { name: 'Body Cream', category: 'Body care', description: 'Rich shea butter cream that sinks in without the grease.' },
     { name: 'Soap', category: 'Body care', description: 'Small-batch bar soap with a creamy, kind-to-skin lather.' },
-    { name: 'Hair Cream', category: 'Hair care', description: 'Softens, defines and seals in moisture from root to tip.' },
+  ];
+
+  // Copy taken from the product labels
+  protected readonly hairProducts: HairProduct[] = [
+    {
+      name: 'Miracle Shampoo',
+      size: 'Ultra mild · 500ml',
+      note: 'Gentle cleansing and scalp care for long, strong hair.',
+      benefits: ['Nourishes & strengthens', 'Reduces hair loss', 'Anti-dandruff'],
+      image: 'products/Hair/shampoo.jpeg',
+    },
+    {
+      name: 'Miracle Hair Gel',
+      size: '100ml',
+      note: 'Firm hold and definition that nourishes as it styles.',
+      benefits: ['Shine & moisture', 'No flaking'],
+      image: 'products/Hair/hair_gel.jpeg',
+    },
+    {
+      name: 'Hair Beauty Treatment',
+      size: '100% natural',
+      note: 'A rich treatment to soften, protect and restore your hair.',
+      benefits: ['For all hair types'],
+      image: 'products/Hair/hair_beauty_treatment.jpeg',
+    },
   ];
 
   // PLACEHOLDER: confirm these against the real ingredient lists before launch
@@ -52,9 +84,7 @@ export class Homepage {
 
   // PLACEHOLDER: sample testimonials — replace with real customer reviews before going live
   protected readonly testimonials = [
-    { quote: 'Allure is the only gloss I reach for now. The colour is gorgeous and my lips never feel sticky.', name: 'Customer name' },
-    { quote: 'The body scrub made my skin so soft. You can tell it’s made with care.', name: 'Customer name' },
-    { quote: 'I love that I can ask Dina anything about what’s inside. That honesty is rare.', name: 'Customer name' },
+    { quote: 'Allure is the only gloss I reach for now. The colour is gorgeous and my lips never feel sticky.', name: 'Customer name' }
   ];
 
   protected readonly stars = [1, 2, 3, 4, 5];

@@ -19,13 +19,26 @@
       </div>
     </div>
 
-    <!-- Product lineup -->
-    <div class="lineup relative grid grid-cols-5 gap-2 sm:gap-3 max-w-md w-full mx-auto pb-10">
-      @for (s of shades; track s.name) {
-        <img [src]="s.image" [alt]="s.name + ' lip gloss'" width="896" height="1195"
-          class="w-full aspect-[1/3] object-cover rounded-2xl border border-white shadow-[0_12px_28px_rgb(110_30_66/0.14)]" />
-      }
-      <span class="tag absolute bottom-0 left-1/2 -translate-x-1/2 shadow-sm whitespace-nowrap">5 gloss shades</span>
+    <!-- Hero slides: lip gloss lineup and hair care crossfade on a loop -->
+    <div class="relative max-w-md w-full h-[24rem] sm:h-[28rem] mx-auto">
+      <div class="hero-slide absolute inset-0 grid place-items-center">
+        <div class="lineup relative grid grid-cols-5 gap-2 sm:gap-3 w-full pb-10">
+          @for (s of shades; track s.name) {
+            <img [src]="s.image" [alt]="s.name + ' lip gloss'" width="896" height="1195"
+              class="w-full aspect-[1/3] object-cover rounded-2xl border border-white shadow-[0_12px_28px_rgb(110_30_66/0.14)]" />
+          }
+          <span class="tag absolute bottom-0 left-1/2 -translate-x-1/2 shadow-sm whitespace-nowrap">5 gloss shades</span>
+        </div>
+      </div>
+
+      <div class="hero-slide hero-slide-alt absolute inset-0 flex justify-center">
+        <div class="relative h-full pb-5">
+          <img src="products/Hair/hair_products.jpeg" alt="Miracle Hair Oil, Shampoo and Hair Beauty Treatment"
+            width="960" height="1280"
+            class="h-full w-auto aspect-[3/4] object-cover rounded-[24px] border border-white shadow-[0_12px_28px_rgb(110_30_66/0.14)]" />
+          <span class="tag absolute bottom-0 left-1/2 -translate-x-1/2 shadow-sm whitespace-nowrap">Miracle hair care</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -83,26 +96,70 @@
   </div>
 </section>
 
-<!-- Skincare, body care, hair care -->
-<section id="care" class="max-w-7xl mx-auto px-6 sm:px-12 py-24">
-  <div class="text-center space-y-4 mb-12">
-    <span class="tag">Skin · Body · Hair</span>
-    <h2 class="font-display font-semibold text-4xl sm:text-5xl text-brand-plum">Care, from head to toe</h2>
+<!-- Hair care -->
+<section id="hair" class="max-w-7xl mx-auto px-6 sm:px-12 py-24">
+  <div class="space-y-4 mb-12">
+    <span class="tag">Hair Care</span>
+    <h2 class="font-display font-semibold text-4xl sm:text-5xl text-brand-plum">The Miracle range</h2>
+    <p class="text-brand-ink/80 max-w-lg">Cleanse, style and treat with a routine made for all hair types, from wash day to everyday.</p>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-    @for (p of careProducts; track p.name) {
-      <article class="card p-6 flex flex-col gap-3">
-        <p class="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-pink-deep">{{ p.category }}</p>
-        <h3 class="font-display font-semibold text-xl text-brand-plum">{{ p.name }}</h3>
-        <p class="text-sm text-brand-ink/80 leading-relaxed flex-1">{{ p.description }}</p>
-        <a routerLink="/contact" class="text-sm font-medium text-brand-plum hover:text-brand-pink-deep transition-colors mt-2">
-          Order <span aria-hidden="true">→</span>
-        </a>
-      </article>
-    }
+  <div class="grid lg:grid-cols-[1fr_2fr] gap-6">
+    <figure class="card relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:min-h-[22rem]">
+      <img src="products/Hair/hair_products.jpeg" alt="Miracle Hair Oil, Miracle Shampoo and Hair Beauty Treatment together"
+        width="896" height="1195" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+      <figcaption class="absolute inset-x-0 bottom-0 p-6 pt-16 bg-gradient-to-t from-brand-plum/90 to-transparent text-white">
+        <p class="font-display text-2xl font-semibold">The full routine</p>
+        <p class="text-sm text-brand-blush-deep">Hair oil, shampoo and treatment, made to work together.</p>
+      </figcaption>
+    </figure>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      @for (p of hairProducts; track p.name) {
+        <article class="card overflow-hidden flex flex-col">
+          <div class="aspect-[4/3] sm:aspect-[4/5] overflow-hidden bg-[#F7F6FB] border-b border-brand-blush">
+            <img [src]="p.image" [alt]="p.name" width="896" height="1195" loading="lazy"
+              class="product-photo product-photo-full w-full h-full object-contain sm:object-cover" />
+          </div>
+          <div class="p-5 flex flex-col gap-2 flex-1">
+            <h3 class="font-display font-semibold text-xl text-brand-plum">{{ p.name }}</h3>
+            <p class="text-xs font-medium tracking-widest uppercase text-brand-muted">{{ p.size }}</p>
+            <p class="text-sm text-brand-ink/80 leading-relaxed">{{ p.note }}</p>
+            <ul class="flex flex-wrap gap-1.5 flex-1 content-start">
+              @for (b of p.benefits; track b) {
+                <li class="text-[11px] font-medium text-brand-pink-deep bg-brand-blush rounded-pill px-2.5 py-1">{{ b }}</li>
+              }
+            </ul>
+            <a routerLink="/contact" class="btn btn-primary btn-sm self-start mt-3">Order</a>
+          </div>
+        </article>
+      }
+    </div>
   </div>
 </section>
+
+<!-- Skincare and body care 
+<section id="care" class="bg-brand-blush/60 border-y border-brand-blush-deep">
+  <div class="max-w-7xl mx-auto px-6 sm:px-12 py-24">
+    <div class="text-center space-y-4 mb-12">
+      <span class="tag">Skin · Body</span>
+      <h2 class="font-display font-semibold text-4xl sm:text-5xl text-brand-plum">Skin & body care</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (p of careProducts; track p.name) {
+        <article class="card p-6 flex flex-col gap-3">
+          <p class="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-pink-deep">{{ p.category }}</p>
+          <h3 class="font-display font-semibold text-xl text-brand-plum">{{ p.name }}</h3>
+          <p class="text-sm text-brand-ink/80 leading-relaxed flex-1">{{ p.description }}</p>
+          <a routerLink="/contact" class="text-sm font-medium text-brand-plum hover:text-brand-pink-deep transition-colors mt-2">
+            Order <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      }
+    </div>
+  </div>
+</section>-->
 
 <!-- Ingredients -->
 <section id="ingredients" class="bg-brand-plum text-brand-ivory py-24 relative overflow-hidden">
@@ -177,7 +234,7 @@
 </section>
 
 <!-- Testimonials -->
-<!-- PLACEHOLDER: sample quotes — replace with real customer reviews before launch -->
+<!-- PLACEHOLDER: sample quotes — replace with real customer reviews before launch
 <section class="bg-brand-blush/60 border-y border-brand-blush-deep py-24">
   <div class="max-w-7xl mx-auto px-6 sm:px-12">
     <h2 class="font-display font-semibold text-4xl sm:text-5xl text-brand-plum text-center mb-12">Loved by our customers</h2>
@@ -195,7 +252,7 @@
       }
     </div>
   </div>
-</section>
+</section>-->
 
 <!-- Closing CTA -->
 <section class="py-28 px-6 sm:px-12 text-center max-w-3xl mx-auto space-y-8">
@@ -203,6 +260,6 @@
   <h2 class="font-display font-bold text-4xl sm:text-5xl text-brand-plum tracking-tight">
     Beauty, confidence and self-care.
   </h2>
-  <p class="text-lg text-brand-ink/80">Find the gloss you’ll reach for every day, or treat your skin to something kind.</p>
+  <p class="text-lg text-brand-ink/80">Find the gloss you’ll reach for every day, or treat your hair and skin to something kind.</p>
   <a routerLink="/" fragment="shop" class="btn btn-primary">Shop the Collection</a>
 </section>
